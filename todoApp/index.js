@@ -2,27 +2,23 @@ const express = require("express");
 const app = express();
 
 
-//load config  from env file
+//load config  from env file process.env.PORT ||
 require("dotenv").config();
 const PORT = process.env.PORT || 4000;
+
 
 
 //middleware to parse json request body
 app.use(express.json());
 
 
-//import routes for TODO API
-const todoRoutes = require("./routes/todos");
+// //import routes for TODO API
+// const todoRoutes = require("./routes/todos");
 
-//mount the todo ASPI routes
-app.use("/api/v1" ,todoRoutes);
+// //mount the todo ASPI routes
+// app.use("/api/v1" ,todoRoutes);
 
 
-
-//start server
-app.listen(PORT,() => {
-    console.log(`Server started successfully at ${PORT}`);
-})
 
 
 //connect to the database 
@@ -34,3 +30,9 @@ dbConnect();
 app.get("/",(req,res) => {
     res.send(`<h1>This is HOMEPAGE  baby </h1>`);
 })
+
+//start server
+app.listen(PORT,() => {
+    console.log(`Server started successfully at ${PORT}`);
+})
+
